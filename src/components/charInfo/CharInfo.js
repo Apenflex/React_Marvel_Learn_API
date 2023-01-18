@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -23,7 +24,7 @@ class CharInfo extends Component {
         this.updateChar();
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.charId !== prevProps.charId) {
             this.updateChar();
         }
@@ -54,8 +55,8 @@ class CharInfo extends Component {
 
     onError = () => {
         this.setState({
-            error: true,
             loading: false,
+            error: true,
         })
     }
 
@@ -109,9 +110,9 @@ const CharInfoItem = ({ char }) => {
             <ul className="char__comics-list">
                 {comics.length > 0 ? null : 'There is no comics with this character'}
                 {
-                    comics.map((item) => {
+                    comics.map((item, i) => {
                         return (
-                            <li key={item.id} className="char__comics-item" >
+                            <li key={i} className="char__comics-item" >
                                 {item.name}
                             </li>
                         )
@@ -121,6 +122,11 @@ const CharInfoItem = ({ char }) => {
             </ul>
         </>
     )
+};
+
+CharInfo.propTypes = {
+    charId: PropTypes.number,
+    
 };
 
 export default CharInfo;
