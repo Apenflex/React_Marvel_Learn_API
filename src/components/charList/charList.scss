@@ -4,7 +4,7 @@
     &__content {
         margin-top: 50px;
         display: grid;
-        grid-template-columns: 650px 425px;
+        grid-template-columns: minmax(650px, auto) minmax(auto, 425px);
         column-gap: 25px;
         align-items: start;
     }
