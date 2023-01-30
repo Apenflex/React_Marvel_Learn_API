@@ -4,6 +4,7 @@ import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
+import imageNotFound from '../../resources/img/image_not_found.png';
 import './comicsList.scss';
 
 const ComicsList = () => {
@@ -40,14 +41,15 @@ const ComicsList = () => {
 
     function renderItems(arr) {
         const items = arr.map((item, i) => {
-            let imgStyle = { 'objectFit': 'cover' };
+            // let imgStyle = { 'objectFit': 'cover' };
             if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
-                imgStyle = { 'objectFit': 'unset' };
+                // imgStyle = { 'objectFit': 'unset' };
+                item.thumbnail = imageNotFound;
             }
             return (
                 <li className="comics__item" key={i}>
                     <a href="#">
-                        <img src={item.thumbnail} alt={item.title} className="comics__item-img" style={imgStyle} />
+                        <img src={item.thumbnail} alt={item.title} className="comics__item-img" />
                         <div className="comics__item-name">{item.title}</div>
                         <div className="comics__item-price">{item.price}</div>
                     </a>
