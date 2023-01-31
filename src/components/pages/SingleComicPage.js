@@ -42,7 +42,6 @@ const SingleComicPage = () => {
 }
 
 const ComicInfoItem = ({ comic }) => {
-    console.log(comic);
     const {title, description, pageCount, thumbnail, language, price} = comic;
     return (
         <div className="single-comic">

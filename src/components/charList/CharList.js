@@ -20,14 +20,12 @@ const CharList = (props) => {
     }, [])
 
     const onRequest = (offset, initial) => {
-        console.log('1: onRequest');
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         getAllCharacters(offset)
             .then(onCharListLoaded)
     }
 
     const onCharListLoaded = (newCharList) => {
-        console.log('2: onCharListLoaded');
         let ended = false;
         if (newCharList.length < 9) {
             ended = true;
@@ -37,8 +35,6 @@ const CharList = (props) => {
         setOffset(offset => offset + 9);
         setCharEnded(charEnded => ended);
     }
-
-    console.log('Render: CharList')
 
     const itemRefs = useRef([]);
     const focusOnItem = (id) => {
